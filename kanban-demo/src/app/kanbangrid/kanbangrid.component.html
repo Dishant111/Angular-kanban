@@ -1,0 +1,18 @@
+<div class="kanban">
+  <div
+    class="column"
+    (dragover)="onDragOver($event)"
+    (drop)="onDrop(kanban)"
+    *ngFor="let kanban of kanbanGrid"
+  >
+    <h2>{{ kanban.title }}</h2>
+    <div
+      class="task"
+      draggable="true"
+      (dragstart)="onDragStart(kanban, serice)"
+      *ngFor="let serice of kanban.series"
+    >
+      {{ serice }}
+    </div>
+  </div>
+</div>
