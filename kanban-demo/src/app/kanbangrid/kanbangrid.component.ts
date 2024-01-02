@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EditPopupComponent } from '../edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-kanbangrid',
@@ -10,6 +12,11 @@ export class KanbangridComponent implements OnInit {
    kanbanGrid : KanbanGrid[] = []
    currentkanaban : KanbanGrid|null =null 
    currentSerise : string|null=null 
+
+  constructor(private modalService: NgbModal) {
+    
+  }
+
   ngOnInit(): void {
     let ser1 : KanbanGrid =  {
       title: "todo",
@@ -26,8 +33,9 @@ export class KanbangridComponent implements OnInit {
 
     this.kanbanGrid.push(ser1)
     this.kanbanGrid.push(ser2)
-    this.kanbanGrid.push(ser3) 
+    this.kanbanGrid.push(ser3)
   }
+
   onDragStart(kanban: KanbanGrid,series: string) {
     this.currentkanaban = kanban
     this.currentSerise = series 
@@ -46,6 +54,13 @@ export class KanbangridComponent implements OnInit {
 
   onDragOver($event: DragEvent) {
     $event.preventDefault()
+  }
+
+  onEditTask(kanbanGrid: KanbanGrid,_t9: string) {
+    console.log("hello");
+    
+    const modalRef = this.modalService.open(EditPopupComponent);
+    modalRef.componentInstance.kanbanGrid = kanbanGrid;
   }
 }
 

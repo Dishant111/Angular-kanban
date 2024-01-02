@@ -2,6 +2,7 @@
     font-family: Arial, sans-serif;
     display: flex;
     overflow-x: auto;
+    /* justify-content: space-around; */
     padding: 20px;
 }
 
@@ -21,4 +22,13 @@
     margin: 5px 0;
     background-color: #fff;
     border-radius: 5px;
+    position: relative; /* Position relative for absolute positioning of icons */
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center the content */
+}
+
+.task-icons {
+    display: flex;
+    gap: 5px;
 }

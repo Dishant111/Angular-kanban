@@ -6,13 +6,21 @@
     *ngFor="let kanban of kanbanGrid"
   >
     <h2>{{ kanban.title }}</h2>
-    <div
-      class="task"
-      draggable="true"
-      (dragstart)="onDragStart(kanban, serice)"
-      *ngFor="let serice of kanban.series"
-    >
-      {{ serice }}
-    </div>
+    <ng-container *ngFor="let serice of kanban.series">
+      <div
+        class="task"
+        draggable="true"
+        (dragstart)="onDragStart(kanban, serice)"
+      >
+        {{ serice }}
+
+        <div class="task-icons">
+          <span class="edit-icon" (click)="onEditTask(kanban, serice)">✎</span>
+          <!-- Edit icon -->
+          <span class="delete-icon">🗑</span>
+          <!-- Delete icon -->
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
